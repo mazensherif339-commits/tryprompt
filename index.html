@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TryPrompt.live - Try AI Prompts Before You Buy</title>
+  <meta name="description" content="Instantly try the world's best AI prompts in your browser for free before buying. ChatGPT, Claude, Midjourney, Llama 3 prompts."/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #6366f1; --green: #10b981; --dark: #0f172a; --light: #f8fafc; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',sans-serif; background:var(--light); color:var(--dark); line-height:1.6; }
+    header { background:var(--dark); color:white; text-align:center; padding:80px 20px; }
+    h1 { font-size:3.5rem; font-weight:900; margin:0; }
+    .subtitle { font-size:1.5rem; opacity:0.9; margin-top:16px; }
+    .container { max-width:1280px; margin:40px auto; padding:0 20px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(360px,1fr)); gap:28px; }
+    .card { background:white; border-radius:20px; padding:32px; box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:all 0.3s ease; }
+    .card:hover { transform:translateY(-12px); box-shadow:0 25px 50px rgba(0,0,0,0.15); }
+    .prompt-title { font-size:1.6rem; font-weight:700; color:var(--primary); margin-bottom:8px; }
+    .price { font-size:2.4rem; font-weight:900; color:var(--green); margin:12px 0; }
+    .desc { opacity:0.85; margin:16px 0; font-size:1.05rem; }
+    .btn { padding:14px 28px; margin:8px 6px 0 0; border:none; border-radius:12px; font-weight:700; font-size:1rem; cursor:pointer; transition:0.3s; }
+    .try-btn { background:var(--primary); color:white; }
+    .buy-btn { background:var(--green); color:white; }
+    .btn:hover { transform:scale(1.08); }
+    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; }
+    .modal-content { background:white; border-radius:24px; width:94%; max-width:1000px; height:94%; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+    iframe { width:100%; height:100%; border:none; }
+    footer { text-align:center; padding:60px 20px; background:var(--dark); color:white; margin-top:80px; font-size:1.1rem; }
+    @media (max-width:768px) { h1{font-size:2.8rem;} .grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>TryPrompt.live</h1>
+  <p class="subtitle">Try Any Premium AI Prompt Instantly in Your Browser<br>100% Free • No Signup • No Credit Card</p>
+</header>
+
+<div class="container">
+  <div class="grid">
+
+    <!-- Prompt 1 -->
+    <div class="card">
+      <h3 class="prompt-title">MrBeast YouTube Script Generator</h3>
+      <div class="price">$29</div>
+      <p class="desc">Proven 10M+ views formula. Generates hook, story, and viral CTA in seconds.</p>
+      <button class="btn try-btn" onclick="tryPrompt('MrBeast YouTube Script')">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mrbeast-script','_blank')">Buy $29</button>
+    </div>
+
+    <!-- Prompt 2 -->
+    <div class="card">
+      <h3 class="prompt-title">Cold Email That Gets 70% Reply Rate</h3>
+      <div class="price">$39</div>
+      <p class="desc">Used by top B2B sales teams. Works on CEOs, VCs, and Fortune 500 founders.</p>
+      <button class="btn try-btn" onclick="tryPrompt('Cold Email 70% Reply')">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/cold-email','_blank')">Buy $39</button>
+    </div>
+
+    <!-- Prompt 3 -->
+    <div class="card">
+      <h3 class="prompt-title">Midjourney Cinematic Movie Poster</h3>
+      <div class="price">$19</div>
+      <p class="desc">One prompt = Hollywood-level cinematic images every single time.</p>
+      <button class="btn try-btn" onclick="tryPrompt('Midjourney Cinematic')">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mj-cinematic','_blank')">Buy $19</button>
+    </div>
+
+    <!-- Prompt 4 -->
+    <div class="card">
+      <h3 class="prompt-title">LinkedIn Post That Gets 100K+ Impressions</h3>
+      <div class="price">$25</div>
+      <p class="desc">Viral hook + storytelling framework used by top creators.</p>
+      <button class="btn try-btn" onclick="tryPrompt('Viral LinkedIn Post')">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/linkedin-viral','_blank')">Buy $25</button>
+    </div>
+
+    <!-- Prompt 5 -->
+    <div class="card">
+      <h3 class="prompt-title">ChatGPT Resume Builder (ATS Proof)</h3>
+      <div class="price">$35</div>
+      <p class="desc">Beats 99% of applicants. Used by Google, Amazon, Meta candidates.</p>
+      <button class="btn try-btn" onclick="tryPrompt('ATS Resume Builder')">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/resume','_blank')">Buy $35</button>
+    </div>
+
+    <!-- Prompt 6 -->
+    <div class="card">
+      <h3 class="prompt-title">Sora / Runway Video Prompt Master</h3>
+      <div class="price">$49</div>
+      <p class="desc">Create cinematic AI videos like a pro director.</p>
+      <button class="btn try-btn" onclick="tryPrompt('AI Video Director')">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/video-prompt','_blank')">Buy $49</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Full Screen AI Chat Modal -->
+<div id="tryModal" class="modal">
+  <div class="modal-content">
+    <iframe src="https://huggingface.co/spaces/mlc-ai/web-llm-chat?model=llama-3.1-8b-instruct" allowfullscreen></iframe>
+  </div>
+</div>
+
+<footer>
+  © 2025 TryPrompt.live — The World's First "Try Before You Buy" AI Prompt Marketplace<br>
+  Made with love for the AI community
+</footer>
+
+<script>
+function tryPrompt(name) {
+  document.getElementById('tryModal').style.display = 'flex';
+}
+// Close modal when clicking outside
+document.getElementById('tryModal').addEventListener('click', function(e){
+  if(e.target === this) this.style.display = 'none';
+});
+</script>
+
+</body>
+</html>
