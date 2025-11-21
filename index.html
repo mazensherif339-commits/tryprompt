@@ -4,120 +4,93 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TryPrompt.live - Try AI Prompts Before You Buy</title>
-  <meta name="description" content="Instantly try the world's best AI prompts in your browser for free before buying. ChatGPT, Claude, Midjourney, Llama 3 prompts."/>
+  <meta name="description" content="Instantly try the world's best AI prompts for free before buying - ChatGPT, Claude, Midjourney, Llama 3"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
   <style>
-    :root { --primary: #6366f1; --green: #10b981; --dark: #0f172a; --light: #f8fafc; }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Inter',sans-serif; background:var(--light); color:var(--dark); line-height:1.6; }
-    header { background:var(--dark); color:white; text-align:center; padding:80px 20px; }
-    h1 { font-size:3.5rem; font-weight:900; margin:0; }
-    .subtitle { font-size:1.5rem; opacity:0.9; margin-top:16px; }
-    .container { max-width:1280px; margin:40px auto; padding:0 20px; }
-    .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(360px,1fr)); gap:28px; }
-    .card { background:white; border-radius:20px; padding:32px; box-shadow:0 10px 30px rgba(0,0,0,0.08); transition:all 0.3s ease; }
-    .card:hover { transform:translateY(-12px); box-shadow:0 25px 50px rgba(0,0,0,0.15); }
-    .prompt-title { font-size:1.6rem; font-weight:700; color:var(--primary); margin-bottom:8px; }
-    .price { font-size:2.4rem; font-weight:900; color:var(--green); margin:12px 0; }
-    .desc { opacity:0.85; margin:16px 0; font-size:1.05rem; }
-    .btn { padding:14px 28px; margin:8px 6px 0 0; border:none; border-radius:12px; font-weight:700; font-size:1rem; cursor:pointer; transition:0.3s; }
-    .try-btn { background:var(--primary); color:white; }
-    .buy-btn { background:var(--green); color:white; }
-    .btn:hover { transform:scale(1.08); }
-    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:9999; justify-content:center; align-items:center; }
-    .modal-content { background:white; border-radius:24px; width:94%; max-width:1000px; height:94%; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
-    iframe { width:100%; height:100%; border:none; }
-    footer { text-align:center; padding:60px 20px; background:var(--dark); color:white; margin-top:80px; font-size:1.1rem; }
-    @media (max-width:768px) { h1{font-size:2.8rem;} .grid{grid-template-columns:1fr;} }
+    :root { --p:#6366f1; --g:#10b981; --d:#0f172a; --l:#f8fafc; }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Inter',sans-serif;background:var(--l);color:var(--d);line-height:1.6;}
+    header{background:var(--d);color:white;text-align:center;padding:90px 20px;}
+    h1{font-size:3.8rem;font-weight:900;}
+    .sub{font-size:1.6rem;opacity:0.9;margin-top:16px;}
+    .container{max-width:1340px;margin:50px auto;padding:0 20px;}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:30px;}
+    .card{background:white;border-radius:20px;padding:34px;box-shadow:0 12px 40px rgba(0,0,0,0.09);transition:0.4s;}
+    .card:hover{transform:translateY(-14px);box-shadow:0 30px 70px rgba(0,0,0,0.18);}
+    .prompt-title{font-size:1.65rem;font-weight:700;color:var(--p);margin-bottom:10px;}
+    .price{font-size:2.6rem;font-weight:900;color:var(--g);margin:14px 0;}
+    .desc{opacity:0.88;font-size:1.07rem;margin:18px 0;}
+    .btn{padding:15px 30px;margin:10px 8px 0 0;border:none;border-radius:14px;font-weight:700;font-size:1.05rem;cursor:pointer;transition:0.3s;}
+    .try-btn{background:var(--p);color:white;}
+    .buy-btn{background:var(--g);color:white;}
+    .btn:hover{transform:scale(1.1);}
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.96);z-index:9999;justify-content:center;align-items:center;}
+    .modal-content{background:white;border-radius:26px;width:95%;max-width:1100px;height:95%;overflow:hidden;box-shadow:0 30px 90px rgba(0,0,0,0.4);}
+    iframe{width:100%;height:100%;border:none;}
+    footer{text-align:center;padding:70px 20px;background:var(--d);color:white;margin-top:100px;font-size:1.15rem;}
   </style>
 </head>
 <body>
 
 <header>
   <h1>TryPrompt.live</h1>
-  <p class="subtitle">Try Any Premium AI Prompt Instantly in Your Browser<br>100% Free • No Signup • No Credit Card</p>
+  <p class="sub">Try Any Premium AI Prompt Instantly in Your Browser<br>100% Free • No Signup • No Credit Card Required</p>
 </header>
 
 <div class="container">
   <div class="grid">
 
-    <!-- Prompt 1 -->
-    <div class="card">
-      <h3 class="prompt-title">MrBeast YouTube Script Generator</h3>
-      <div class="price">$29</div>
-      <p class="desc">Proven 10M+ views formula. Generates hook, story, and viral CTA in seconds.</p>
-      <button class="btn try-btn" onclick="tryPrompt('MrBeast YouTube Script')">Try Now Free</button>
-      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mrbeast-script','_blank')">Buy $29</button>
-    </div>
+    <!-- 20 Top-Selling Prompts 2025 -->
+    <div class="card"><h3 class="prompt-title">MrBeast YouTube Script Generator</h3><div class="price">$29</div><p class="desc">Proven 10M+ views formula. Hook + story + viral CTA.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mrbeast','_blank')">Buy $29</button></div>
 
-    <!-- Prompt 2 -->
-    <div class="card">
-      <h3 class="prompt-title">Cold Email That Gets 70% Reply Rate</h3>
-      <div class="price">$39</div>
-      <p class="desc">Used by top B2B sales teams. Works on CEOs, VCs, and Fortune 500 founders.</p>
-      <button class="btn try-btn" onclick="tryPrompt('Cold Email 70% Reply')">Try Now Free</button>
-      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/cold-email','_blank')">Buy $39</button>
-    </div>
+    <div class="card"><h3 class="prompt-title">Cold Email – 70% Reply Rate</h3><div class="price">$39</div><p class="desc">Used by top sales teams. Works on CEOs & VCs.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/coldemail','_blank')">Buy $39</button></div>
 
-    <!-- Prompt 3 -->
-    <div class="card">
-      <h3 class="prompt-title">Midjourney Cinematic Movie Poster</h3>
-      <div class="price">$19</div>
-      <p class="desc">One prompt = Hollywood-level cinematic images every single time.</p>
-      <button class="btn try-btn" onclick="tryPrompt('Midjourney Cinematic')">Try Now Free</button>
-      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mj-cinematic','_blank')">Buy $19</button>
-    </div>
+    <div class="card"><h3 class="prompt-title">Midjourney Cinematic Movie Poster</h3><div class="price">$19</div><p class="desc">One prompt = Hollywood-level images every time.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mj-cinematic','_blank')">Buy $19</button></div>
 
-    <!-- Prompt 4 -->
-    <div class="card">
-      <h3 class="prompt-title">LinkedIn Post That Gets 100K+ Impressions</h3>
-      <div class="price">$25</div>
-      <p class="desc">Viral hook + storytelling framework used by top creators.</p>
-      <button class="btn try-btn" onclick="tryPrompt('Viral LinkedIn Post')">Try Now Free</button>
-      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/linkedin-viral','_blank')">Buy $25</button>
-    </div>
+    <div class="card"><h3 class="prompt-title">LinkedIn Viral Post (100K+ Impressions)</h3><div class="price">$25</div><p class="desc">Hook + storytelling framework used by top creators.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/linkedin','_blank')">Buy $25</button></div>
 
-    <!-- Prompt 5 -->
-    <div class="card">
-      <h3 class="prompt-title">ChatGPT Resume Builder (ATS Proof)</h3>
-      <div class="price">$35</div>
-      <p class="desc">Beats 99% of applicants. Used by Google, Amazon, Meta candidates.</p>
-      <button class="btn try-btn" onclick="tryPrompt('ATS Resume Builder')">Try Now Free</button>
-      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/resume','_blank')">Buy $35</button>
-    </div>
+    <div class="card"><h3 class="prompt-title">ATS-Proof Resume Builder</h3><div class="price">$35</div><p class="desc">Used by Google, Amazon, Meta candidates.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/resume','_blank')">Buy $35</button></div>
 
-    <!-- Prompt 6 -->
-    <div class="card">
-      <h3 class="prompt-title">Sora / Runway Video Prompt Master</h3>
-      <div class="price">$49</div>
-      <p class="desc">Create cinematic AI videos like a pro director.</p>
-      <button class="btn try-btn" onclick="tryPrompt('AI Video Director')">Try Now Free</button>
-      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/video-prompt','_blank')">Buy $49</button>
-    </div>
+    <div class="card"><h3 class="prompt-title">Sora / Runway Video Prompt Master</h3><div class="price">$49</div><p class="desc">Create cinematic AI videos like a pro director.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/video','_blank')">Buy $49</button></div>
+
+    <div class="card"><h3 class="prompt-title">Viral Twitter Thread (100K+ views)</h3><div class="price">$29</div><p class="desc">10-part framework used by top creators.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/twitter','_blank')">Buy $29</button></div>
+
+    <div class="card"><h3 class="prompt-title">Product Hunt Launch Copy</h3><div class="price">$49</div><p class="desc">Tagline + copy that guarantees Top 1.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/ph','_blank')">Buy $49</button></div>
+
+    <div class="card"><h3 class="prompt-title">Notion Second Brain OS</h3><div class="price">$39</div><p class="desc">Full PARA system + databases in one prompt.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/notion','_blank')">Buy $39</button></div>
+
+    <div class="card"><h3 class="prompt-title">Leonardo AI Anime Character Sheet</h3><div class="price">$19</div><p class="desc">Perfect anime character in 8 angles.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/anime','_blank')">Buy $19</button></div>
+
+    <div class="card"><h3 class="prompt-title">Claude 3.5 Code Anything</h3><div class="price">$45</div><p class="desc">Best prompt to build full apps faster than Cursor.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/claude','_blank')">Buy $45</button></div>
+
+    <div class="card"><h3 class="prompt-title">Instagram Caption (10K+ Likes)</h3><div class="price">$25</div><p class="desc">Hook + story + CTA used by 1M+ accounts.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/ig','_blank')">Buy $25</button></div>
+
+    <div class="card"><h3 class="prompt-title">50K-Word Book Writer</h3><div class="price">$69</div><p class="desc">Full nonfiction book in 7 days.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/book','_blank')">Buy $69</button></div>
+
+    <div class="card"><h3 class="prompt-title">Stable Diffusion Photoreal Portrait</h3><div class="price">$19</div><p class="desc">Better than Midjourney for human faces.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/sd','_blank')">Buy $19</button></div>
+
+    <div class="card"><h3 class="prompt-title">10%+ Converting Landing Page Copy</h3><div class="price">$59</div><p class="desc">Used by Copyhackers & top marketers.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/landing','_blank')">Buy $59</button></div>
+
+    <div class="card"><h3 class="prompt-title">TikTok Viral Script (Millions Views)</h3><div class="price">$35</div><p class="desc">Hook in first 0.3s + retention formula.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button><button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/tiktok','_blank')">Buy $35</button></div>
+
+    <!-- Add more prompts here if you want up to 50+ -->
 
   </div>
 </div>
 
-<!-- Full Screen AI Chat Modal -->
-<div id="tryModal" class="modal">
+<div id="modal" class="modal">
   <div class="modal-content">
     <iframe src="https://huggingface.co/spaces/mlc-ai/web-llm-chat?model=llama-3.1-8b-instruct" allowfullscreen></iframe>
   </div>
 </div>
 
 <footer>
-  © 2025 TryPrompt.live — The World's First "Try Before You Buy" AI Prompt Marketplace<br>
-  Made with love for the AI community
+  © 2025 TryPrompt.live — The World's First "Try Before You Buy" AI Prompt Marketplace<br>All prompts run 100% in your browser using WebLLM
 </footer>
 
 <script>
-function tryPrompt(name) {
-  document.getElementById('tryModal').style.display = 'flex';
-}
-// Close modal when clicking outside
-document.getElementById('tryModal').addEventListener('click', function(e){
-  if(e.target === this) this.style.display = 'none';
-});
+function tryPrompt(){document.getElementById('modal').style.display='flex';}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)this.style.display='none';});
 </script>
 
 </body>
