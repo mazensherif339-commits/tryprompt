@@ -3,96 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TryPrompt.live - 10,000 Premium Prompts (All on One Page)</title>
+<title>TryPrompt.live - 10,000+ Premium AI Prompts</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--p:#6366f1;--g:#10b981;--d:#0f172a;--l:#f8fafc;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Inter',sans-serif;background:var(--l);color:var(--d);}
-header{background:var(--d);color:white;text-align:center;padding:90px 20px;}
-h1{font-size:3.8rem;font-weight:900;}
+body{font-family:'Inter',sans-serif;background:var(--l);color:var(--d);min-height:200vh;}
+header{background:var(--d);color:white;text-align:center;padding:100px 20px;}
+h1{font-size:3.9rem;font-weight:900;}
 .sub{font-size:1.6rem;opacity:0.9;margin-top:16px;}
-.search-container{max-width:800px;margin:40px auto;padding:0 20px;}
-#search{border:none;border-radius:16px;padding:18px 24px;font-size:1.3rem;width:100%;box-shadow:0 10px 30px rgba(0,0,0,0.1);outline:none;}
+.search-container{max-width:900px;margin:40px auto;padding:0 20px;}
+#prompt-search{border:none;border-radius:16px;padding:20px 28px;font-size:1.4rem;width:100%;box-shadow:0 12px 40px rgba(0,0,0,0.12);outline:none;}
 .stats{text-align:center;margin:20px 0;font-size:1.5rem;color:#555;font-weight:bold;}
 .container{max-width:1600px;margin:0 auto;padding:0 20px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;margin-top:20px;}
-.card{background:white;border-radius:20px;padding:30px;box-shadow:0 10px 35px rgba(0,0,0,0.08);transition:.3s;}
-.card:hover{transform:translateY(-10px);box-shadow:0 20px 50px rgba(0,0,0,0.16);}
-.title{font-size:1.5rem;font-weight:700;color:var(--p);}
-.price from{transform:scale(1.08);}
-.price{font-size:2.3rem;font-weight:900;color:var(--g);}
-.desc{font-size:1rem;color:#444;line-height:1.5;margin:12px 0;}
-.btn{padding:12px 24px;margin:5px 3px 0 0;border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:0.95rem;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px;margin-top:20px;}
+.card{background:white;border-radius:22px;padding:34px;box-shadow:0 12px 40px rgba(0,0,0,0.09);transition:.4s;}
+.card:hover{transform:translateY(-12px);box-shadow:0 28px 70px rgba(0,0,0,0.18);}
+.title{font-size:1.6rem;font-weight:700;color:var(--p);}
+.price{font-size:2.5rem;font-weight:900;color:var(--g);}
+.desc{font-size:1.1rem;color:#444;line-height:1.6;margin:16px 0;}
+.btn{padding:15px 30px;margin:6px 5px 0 0;border:none;border-radius:14px;font-weight:700;cursor:pointer;font-size:1.1rem;}
 .try{background:var(--p);color:white;}
 .buy{background:var(--g);color:white;}
-.loading{text-align:center;padding:100px;font-size:2rem;color:#6366f1;}
+.btn:hover{transform:scale(1.08);}
+
+/* زر Select Language – مضمون الظهور 100% */
+#language-selector {
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  z-index: 999999 !important;
+  font-family: 'Inter', sans-serif;
+}
+#lang-btn {
+  background: #000 !important;
+  color: white !important;
+  border: 2px solid #333 !important;
+  padding: 18px 36px !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  border-radius: 60px !important;
+  cursor: pointer !important;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.6) !important;
+  transition: all .3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+#lang-btn:hover {
+  background: #111 !important;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8) !important;
+}
+#lang-btn::after {
+  content: "▼" !important;
+  font-size: 16px !important;
+}
+
+#lang-dropdown {
+  position: absolute !important;
+  bottom: 90px !important;
+  right: 0 !important;
+  width: 400px !important;
+  max-height: 80vh !important;
+  background: #000 !important;
+  border: 1px solid #333 !important;
+  border-radius: 28px !important;
+  overflow: hidden !important;
+  box-shadow: 0 35px 90px rgba(0,0,0,0.9) !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all .4s ease;
+}
+#lang-dropdown.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+#lang-search {
+  width: 100% !important;
+  padding: 22px 28px !important;
+  background: #111 !important;
+  border: none !important;
+  color: white !important;
+  font-size: 18px !important;
+  outline: none !important;
+}
+#lang-search::placeholder {color: #888 !important;}
+#lang-list {
+  max-height: 68vh !important;
+  overflow-y: auto !important;
+  padding: 12px 0 !important;
+}
+.lang-item {
+  padding: 18px 32px !important;
+  color: white !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  transition: .2s;
+}
+.lang-item:hover {background: #222 !important;}
+#lang-list::-webkit-scrollbar {width: 12px;}
+#lang-list::-webkit-scrollbar-track {background: #111; border-radius: 10px;}
+#lang-list::-webkit-scrollbar-thumb {background: #555; border-radius: 10px;}
+#lang-list::-webkit-scrollbar-thumb:hover {background: #777;}
 </style>
 </head>
 <body>
 
 <header>
   <h1>TryPrompt.live</h1>
-  <p class="sub">10,000 Premium AI Prompts – ALL Loaded on This Page!</p>
+  <p class="sub">10,000+ Premium AI Prompts • Try Any Prompt Free • Instant Search</p>
 </header>
 
 <div class="search-container">
-  <input type="text" id="search" placeholder="Search all 10,000 prompts instantly..." autocomplete="off">
+  <input type="text" id="prompt-search" placeholder="Search 10,000+ prompts... (YouTube, Email, Midjourney...)" autocomplete="off">
 </div>
 
-<div class="stats">Showing <strong id="count">10,000</strong> prompts (scroll down to see them all)</div>
+<div class="stats">Showing <strong id="count">10,000</strong> premium prompts</div>
 
 <div class="container">
-  <div id="grid" class="grid">
-    <div class="loading">Generating 10,000 premium prompts right now... (takes 3–8 seconds)</div>
+  <div id="prompts-grid" class="grid"></div>
+</div>
+
+<!-- زر Select Language (مضمون الظهور) -->
+<div id="language-selector">
+  <button id="lang-btn">Select Language</button>
+  <div id="lang-dropdown">
+    <input type="text" id="lang-search" placeholder="Search language...">
+    <div id="lang-list"></div>
   </div>
 </div>
 
 <script>
-// قاعدة بيانات كبيرة ومتنوعة
-const titles = ["MrBeast YouTube Script","Cold Email 70% Reply","Midjourney Cinematic Poster","LinkedIn Viral Post","ATS Resume Builder","Sora Video Master","Twitter Thread 100K+","Product Hunt Launch Copy","Notion Second Brain","Leonardo Anime Sheet","Claude 3.5 Code App","Instagram 10K+ Caption","50K Book Writer","Stable Diffusion Portrait","10%+ Landing Page","TikTok Millions Views","Newsletter Copy","Podcast Script","SEO #1 Blog","Freelance Proposal","Facebook Ads","Google Ads","Amazon Listing","Cover Letter","Business Plan","Pitch Deck","DALL-E Art","Logo Prompt","Brand Kit","Python Automation"];
-const prices = ["$19","$25","$29","$35","$39","$45","$49","$59","$69","$79","$99"];
-const descs = ["10M+ views formula","70% reply rate","Hollywood quality","Used by top creators","Passes ATS filters","Cinematic videos","100K+ impressions","Top 1 Product Hunt","Full PARA system","8 perfect angles","Full app in one prompt","Viral captions","Book in 7 days","Photoreal faces","10%+ conversion","Hook in 0.3s","Morning Brew style","Joe Rogan style","Rank #1 Google","90% win rate"];
+// توليد 10,000 برومبت
+const bases = ["MrBeast YouTube","Cold Email","Midjourney","LinkedIn Viral","Resume ATS","Sora Video","Twitter Thread","Product Hunt","Notion OS","Anime","Claude Code","Instagram","50K Book","Stable Diffusion","Landing Page","TikTok","Newsletter","Podcast","SEO Blog","Freelance Proposal"];
+const prices = ["$19","$29","$35","$39","$49","$59","$69","$79","$99"];
+const descs = ["10M+ views","70% reply rate","Hollywood quality","100K+ impressions","Top creator formula","Cinematic videos","Viral threads","Top 1 copy","Full system","Perfect character","Full apps","10K+ likes","Book in 7 days","Photoreal faces","10%+ conversion","Millions views","High open rate","Joe Rogan style","Rank #1","90% win rate"];
 
-const grid = document.getElementById("grid");
+const grid = document.getElementById("prompts-grid");
 let html = "";
-
-console.time("10k prompts generation");
-
-for(let i = 1; i <= 10000; i++) {
-  const title = titles[Math.floor(Math.random() * titles.length)];
-  const price = prices[Math.floor(Math.random() * prices.length)];
-  const desc = descs[Math.floor(Math.random() * descs.length)];
-  const tag = i <= 100 ? "Best Seller" : (Math.random() > 0.92 ? "Trending" : "");
-
-  html += `
-  <div class="card">
-    <h3 class="title">${title} Prompt ${tag ? `• ${tag}` : ""}</h3>
-    <div class="price">${price}</div>
-    <p class="desc">${desc} • Instant delivery</p>
-    <button class="btn try" onclick="alert('Free prompt tester loading...')">Try Free</button>
-    <button class="btn buy" onclick="window.open('https://tryprompt.gumroad.com/l/prompt','_blank')">Buy ${price}</button>
-  </div>`;
+for(let i=1;i<=10000;i++){
+  const t = bases[Math.floor(Math.random()*bases.length)]+" Prompt";
+  const p = prices[Math.floor(Math.random()*prices.length)];
+  const d = descs[Math.floor(Math.random()*descs.length)];
+  html += `<div class="card"><h3 class="title">${t}</h3><div class="price">${p}</div><p class="desc">${d}</p>
+    <button class="btn try" onclick="alert('Loading...')">Try Free</button>
+    <button class="btn buy" onclick="window.open('https://tryprompt.gumroad.com/l/prompt','_blank')">Buy ${p}</button></div>`;
 }
-
 grid.innerHTML = html;
-console.timeEnd("10k prompts generation");
-document.getElementById("count").textContent = "10,000";
 
-// البحث الفوري (سريع جدًا حتى مع 10,000 كارت)
-document.getElementById("search").addEventListener("input", function() {
+// بحث البرومبتات
+document.getElementById("prompt-search").addEventListener("input",function(){
   const term = this.value.toLowerCase();
-  let visible = 0;
-  document.querySelectorAll(".card").forEach(card => {
-    if (card.textContent.toLowerCase().includes(term)) {
-      card.style.display = "block";
-      visible++;
-    } else {
-      card.style.display = "none";
-    }
+  document.querySelectorAll(".card").forEach(c=> {
+    c.style.display = c.textContent.toLowerCase().includes(term) ? "block" : "none";
   });
-  document.getElementById("count").textContent = visible || "10,000";
 });
+
+// === Select Language ===
+const languages = ["English","العربية","中文（简体）","中文（繁體）","Español","Français","Deutsch","日本語","Русский","Português","Italiano","한국어","हिन्दी","Türkçe","Polski","Nederlands","فارسی","עברית","ไทย","Bahasa Indonesia","Tiếng Việt","Română","Ελληνικά","Čeština","Svenska","Dansk","Magyar","Suomi","Українська","Hrvatski","Български","Srpski","Slovenčina","Lietuvių","Latviešu","Eesti","ქართული","Հայերեն","Azərbaycan dili","Shqip","Bosanski","Català","Kiswahili","Filipino","বাংলা","ਪੰਜਾਬੀ","ગુજરાતી","मराठी","తెలుగు","தமிழ்","ಕನ್ನಡ","മലയാളം","සිංහල","አማርኛ","नेपाली","پښتو","اردو"];
+
+const langBtn = document.getElementById("lang-btn");
+const dropdown = document.getElementById("lang-dropdown");
+const langSearch = document.getElementById("lang-search");
+const langList = document.getElementById("lang-list");
+
+langBtn.addEventListener("click",()=>{ 
+  dropdown.classList.toggle("active");
+  if(dropdown.classList.contains("active")) langSearch.focus();
+});
+
+function render(filter=""){
+  langList.innerHTML = "";
+  languages.filter(l=>l.toLowerCase().includes(filter.toLowerCase())).forEach(l=>{
+    const div = document.createElement("div");
+    div.className="lang-item";
+    div.textContent = l;
+    div.onclick = ()=>{ alert("تم اختيار: "+l); dropdown.classList.remove("active"); };
+    langList.appendChild(div);
+  });
+}
+langSearch.addEventListener("input",e=>render(e.target.value));
+render();
 </script>
 
 </body>
