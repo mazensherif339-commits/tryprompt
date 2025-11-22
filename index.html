@@ -1,35 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TryPrompt.live - 10,000+ AI Prompts (Search Any Prompt)</title>
-  <meta name="description" content="10,000+ premium AI prompts for ChatGPT, Midjourney, Claude, Sora, Llama 3 – Try any prompt free + instant search">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <style>
-    :root{--p:#6366f1;--g:#10b981;--d:#0f172a;--l:#f8fafc;}
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Inter',sans-serif;background:var(--l);color:var(--d);}
-    header{background:var(--d);color:white;text-align:center;padding:90px 20px;}
-    h1{font-size:3.8rem;font-weight:900;}
-    .sub{font-size:1.6rem;opacity:0.9;margin-top:16px;}
-    .search-container{max-width:800px;margin:40px auto;padding:0 20px;}
-    #search{border:none;border-radius:16px;padding:18px 24px;font-size:1.3rem;width:100%;box-shadow:0 10px 30px rgba(0,0,0,0.1);outline:none;}
-    #search::placeholder{color:#999;font-style:italic;}
-    .stats{text-align:center;margin:20px 0;font-size:1.4rem;color:#555;}
-    .container{max-width:1400px;margin:0 auto;padding:0 20px;}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;margin-top:20px;}
-    .card{background:white;border-radius:20px;padding:32px;box-shadow:0 12px 40px rgba(0,0,0,0.09);transition:.4s;}
-    .card:hover{transform:translateY(-12px);box-shadow:0 25px 60px rgba(0,0,0,0.18);}
-    .title{font-size:1.55rem;font-weight:700;color:var(--p);margin-bottom:8px;}
-    .price{font-size:2.4rem;font-weight:900;color:var(--g);}
-    .desc{font-size:1.05rem;color:#444;line-height:1.6;margin:14px 0;}
-    .btn{padding:14px 28px;margin:6px 4px 0 0;border:none;border-radius:12px;font-weight:700;cursor:pointer;font-size:1rem;}
-    .try{background:var(--p);color:white;}
-    .buy{background:var(--g);color:white;}
-    .btn:hover{transform:scale(1.08);}
-    .loading{text-align:center;padding:60px;font-size:1.5rem;color:#666;}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TryPrompt.live - 10,000+ AI Prompts</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--p:#6366f1;--g:#10b981;--d:#0f172a;--l:#f8fafc;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--l);color:var(--d);}
+header{background:var(--d);color:white;text-align:center;padding:90px 20px;}
+h1{font-size:3.8rem;font-weight:900;}
+.sub{font-size:1.6rem;opacity:0.9;margin-top:16px;}
+.search-container{max-width:800px;margin:40px auto;padding:0 20px;}
+#search{border:none;border-radius:16px;padding:18px 24px;font-size:1.3rem;width:100%;box-shadow:0 10px 30px rgba(0,0,0,0.1);outline:none;}
+.stats{text-align:center;margin:20px 0;font-size:1.4rem;color:#555;}
+.container{max-width:1400px;margin:0 auto;padding:0 20px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;margin-top:20px;}
+.card{background:white;border-radius:20px;padding:32px;box-shadow:0 12px 40px rgba(0,0,0,0.09);transition:.4s;}
+.card:hover{transform:translateY(-12px);box-shadow:0 25px 60px rgba(0,0,0,0.18);}
+.title{font-size:1.55rem;font-weight:700;color:var(--p);}
+.price{font-size:2.4rem;font-weight:900;color:var(--g);}
+.desc{font-size:1.05rem;color:#444;line-height:1.6;margin:14px 0;}
+.btn{padding:14px 28px;margin:6px 4px 0 0;border:none;border-radius:12px;font-weight:700;cursor:pointer;}
+.try{background:var(--p);color:white;}
+.buy{background:var(--g);color:white;}
+.btn:hover{transform:scale(1.08);}
+</style>
 </head>
 <body>
 
@@ -39,104 +36,44 @@
 </header>
 
 <div class="search-container">
-  <input type="text" id="search" placeholder="🔍 Search 10,000+ prompts... (e.g. YouTube, Email, Midjourney, Resume, Code, Book)" autocomplete="off">
+  <input type="text" id="search" placeholder="Search 10,000+ prompts... (YouTube, Email, Midjourney, Book, Code...)" autocomplete="off">
 </div>
 
-<div class="stats">Showing <strong id="count">10,000+</strong> premium prompts</div>
+<div class="stats">Showing <strong id="count">10,000+</strong> prompts</div>
 
 <div class="container">
-  <div id="prompts-grid" class="grid"></div>
+  <div id="grid" class="grid"></div>
 </div>
 
 <script>
-// قاعدة بيانات ضخمة لتوليد 10,000 برومبت متنوع
-const bases = [
-  "MrBeast YouTube Script","Cold Email 70% Reply","Midjourney Cinematic","LinkedIn Viral Post","ATS Resume","Sora Video","Twitter Thread","Product Hunt Launch",
-  "Notion Second Brain","Leonardo Anime","Claude 3.5 Code","Instagram Caption","50K Book Writer","Stable Diffusion Portrait","Landing Page Copy",
-  "TikTok Viral Script","Newsletter Copy","Podcast Script","SEO Blog Post","Freelance Proposal","Facebook Ads","Google Ads","Amazon Listing",
-  "Cover Letter","Business Plan","Pitch Deck","DALL-E Art","Logo Design","Brand Kit","Python Script","React App","Flutter App","Figma UI",
-  "ChatGPT System","Llama 3 Fine-tune","Grok Prompt","Claude Opus","Gemini 1.5","Runway Gen-3","Pika Labs Video","HeyGen Avatar","ElevenLabs Voice"
-];
+const bases = ["MrBeast YouTube","Cold Email 70%","Midjourney Cinematic","LinkedIn Viral","ATS Resume","Sora Video","Twitter Thread","Product Hunt","Notion OS","Anime Character","Claude Code","Instagram Caption","50K Book","Stable Diffusion","Landing Page","TikTok Script","Newsletter","Podcast Script","SEO Blog","Freelance Proposal","Facebook Ads","Google Ads","Amazon Listing","Cover Letter","Business Plan"];
+const prices = ["$19","$25","$29","$35","$39","$45","$49","$59","$69"];
+const descs = ["10M+ views formula","70% reply rate","Hollywood quality","Used by top creators","Passes all ATS","Cinematic video","100K+ views","Top 1 PH","Full PARA system","8 perfect angles","Full app in one prompt","10K+ likes captions","Book in 7 days","Photoreal faces","10%+ conversion","Millions views","Morning Brew style"];
+let html = "";
 
-const tags = ["Best Seller","Trending","New","10M+ Views","90% Win Rate","Hollywood Quality","Used by CEOs","Google Ranked #1","Millions Views"];
-const prices = ["$19","$25","$29","$35","$39","$45","$49","$59","$69","$79","$99"];
-const descs = [
-  "Proven formula used by top creators","70%+ reply rate with CEOs & VCs","One prompt = Hollywood masterpiece","Viral hook + storytelling framework",
-  "Passes Google, Amazon, Meta filters","Create cinematic videos like a director","10-part thread that gets 100K+ views","Guaranteed Product Hunt #1 copy",
-  "Full PARA system in one prompt","Perfect character in 8 angles","Build full apps faster than Cursor","Captions used by 1M+ follower accounts",
-  "Write a full book in 7 days","Photorealistic humans better than Midjourney","10%+ conversion landing pages","Hook in first 0.3s + millions views"
-];
-
-const links = ["mrbeast","coldemail","mj-cinematic","linkedin","resume","video","twitter","ph","notion","anime","claude","ig","book","sd","landing","tiktok","newsletter","podcast","seo","proposal"];
-
-let allPrompts = [];
-
-function generate10kPrompts() {
-  allPrompts = [];
-  const grid = document.getElementById("prompts-grid");
-  grid.innerHTML = '<div class="loading">Generating 10,000+ premium prompts...</div>';
-
-  setTimeout(() => {
-    let html = "";
-    for (let i = 1; i <= 10000; i++) {
-      const base = bases[Math.floor(Math.random() * bases.length)];
-      const tag = i <= 100 ? "Best Seller" : (Math.random() > 0.9 ? tags[Math.floor(Math.random() * tags.length)] : "");
-      const price = prices[Math.floor(Math.random() * prices.length)];
-      const desc = descs[Math.floor(Math.random() * descs.length)];
-      const link = links[Math.floor(Math.random() * links.length)];
-      const title = `${base} Prompt${tag ? ` • ${tag}` : ""}`;
-
-      const prompt = { title, price, desc, link };
-      allPrompts.push(prompt);
-
-      // نعرض أول 300 بس عشان السرعة (الباقي يتحمل لما يبحث)
-      if (i <= 300) {
-        html += `
-          <div class="card" data-title="${title.toLowerCase()}" data-desc="${desc.toLowerCase()}">
-            <h3 class="title">${title}</h3>
-            <div class="price">${price}</div>
-            <p class="desc">${desc} • Instant delivery after purchase</p>
-            <button class="btn try" onclick="alert('Free tester loading this prompt now!')">Try Free</button>
-            <button class="btn buy" onclick="window.open('https://tryprompt.gumroad.com/l/${link}','_blank')">Buy ${price}</button>
-          </div>`;
-      }
-    }
-    grid.innerHTML = html + `<div style="grid-column:1/-1;text-align:center;padding:50px;font-size:1.6rem;color:#6366f1;font-weight:bold;">
-      10,000+ Prompts Loaded Successfully! Use search above to find anything
-    </div>`;
-    document.getElementById("count").textContent = "10,000+";
-  }, 800);
+for(let i=1;i<=10000;i++){
+  const b = bases[Math.floor(Math.random()*bases.length)];
+  const p = prices[Math.floor(Math.random()*prices.length)];
+  const d = descs[Math.floor(Math.random()*descs.length)];
+  const tag = i<=50?"Best Seller":(Math.random()>0.9?"Trending":"");
+  html += `
+  <div class="card">
+    <h3 class="title">${b} Prompt ${tag}</h3>
+    <div class="price">${p}</div>
+    <p class="desc">${d} • Instant delivery</p>
+    <button class="btn try" onclick="alert('Free tester loading...')">Try Free</button>
+    <button class="btn buy" onclick="window.open('https://tryprompt.gumroad.com/l/prompt','_blank')">Buy ${p}</button>
+  </div>`;
+  if(i<=300) document.getElementById("grid").innerHTML = html;
 }
+document.getElementById("grid").innerHTML = html + `<div style="grid-column:1/-1;text-align:center;padding:60px;font-size:1.7rem;color:var(--p);font-weight:bold;">10,000+ Prompts Ready! Use search above</div>`;
 
-// البحث الفوري القوي جدًا
-document.getElementById("search").addEventListener("input", function() {
-  const term = this.value.toLowerCase().trim();
-  const cards = document.querySelectorAll(".card");
-  let visible = 0;
-
-  if (term === "") {
-    cards.forEach(c => c.style.display = "block");
-    document.getElementById("count").textContent = "10,000+";
-    return;
-  }
-
-  cards.forEach(card => {
-    const title = card.getAttribute("data-title");
-    const desc = card.getAttribute("data-desc");
-    if (title.includes(term) || desc.includes(term) || card.textContent.toLowerCase().includes(term)) {
-      card.style.display = "block";
-      visible++;
-    } else {
-      card.style.display = "none";
-    }
+document.getElementById("search").addEventListener("input",()=>{  
+  const term = document.getElementById("search").value.toLowerCase();
+  document.querySelectorAll(".card").forEach(c=>{
+    c.style.display = c.textContent.toLowerCase().includes(term) ? "block" : "none";
   });
-
-  document.getElementById("count").textContent = visible > 0 ? visible : "0";
 });
-
-// شغّل عند تحميل الصفحة
-window.onload = generate10kPrompts;
 </script>
-
 </body>
 </html>
