@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-<html lang9="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TryPrompt.live - Try AI Prompts Before You Buy</title>
+  <meta name="description" content="Try the world's best AI prompts instantly for free – ChatGPT, Claude, Midjourney, Sora, Llama 3">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-  <!-- Google Translate -->
+  <!-- Google Translate + Native Language Names -->
   <div id="google_translate_element" style="position:fixed;bottom:20px;right:20px;z-index:99999;"></div>
 
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'ar,es,fr,de,zh-CN,zh-TW,ja,ko,pt,ru,hi,it,tr,pl,uk,vi,th,id,nl,fa,he,sv,ro,el,bg,cs,da,fi,hu,no,sk,hr,sr,lt,lv,et,tl,sw,ms,bn,ur,pa,gu,mr,te,ta,kn,ml,si,am,ha,ig,yo,af,sq,hy,az,eu,be,bs,ca,ka,km,ku,lo,mk,mn,ne,ps,so,zu',
+        includedLanguages: 'ar,es,fr,de,zh-CN,zh-TW,ja,ko,pt,ru,hi,it,tr,pl,uk,vi,th,id,nl,fa,he,sv,ro,el,bg,cs,da,fi,hu,no,sk,hr,sr,lt,lv,et,tl,sw,ms,bn,ur,pa,gu,mr,te,ta,kn,ml,si,am,ha,ig,yo,af,sq,hy,az,eu,be,bs,ca,ceb,ny,co,eo,fy,gl,ka,kk,km,ku,ky,lo,la,lb,mk,mg,mt,mi,mn,my,ne,or,ps,sm,gd,st,sn,sd,so,su,tg,uz,yi,zu',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
         autoDisplay: false
       }, 'google_translate_element');
 
       // Auto translate to browser language
       setTimeout(() => {
-        const lang = (navigator.language || navigator.userLanguage).slice(0,2);
+        const userLang = (navigator.language || navigator.userLanguage).slice(0,2);
         const select = document.querySelector('.goog-te-combo');
-        if (select && lang !== 'en' && ['ar','es','fr','de','zh','ja','ko','pt','ru','hi'].includes(lang)) {
-          select.value = lang === 'zh' ? 'zh-CN' : lang;
-          select.dispatchEvent(new Event('change'));
+        if (select && userLang !== 'en') {
+          const code = userLang === 'zh' ? 'zh-CN' : userLang;
+          if (select.querySelector(`option[value="${code}"]`)) {
+            select.value = code;
+            select.dispatchEvent(new Event('change'));
+          }
         }
       }, 1200);
 
@@ -36,25 +40,41 @@
         }
       }, 300);
 
-      // Force native language names (this is the strongest method)
+      // ALL languages in their native script (135+ languages)
       const nativeNames = {
-        "Arabic":"العربية","English":"English","Spanish":"Español","French":"Français","German":"Deutsch",
-        "Chinese (Simplified)":"中文（简体）","Chinese (Traditional)":"中文（繁體）","Japanese":"日本語","Korean":"한국어",
-        "Portuguese":"Português","Russian":"Русский","Hindi":"हिन्दी","Italian":"Italiano","Turkish":"Türkçe",
-        "Polish":"Polski","Ukrainian":"Українська","Vietnamese":"Tiếng Việt","Thai":"ไทย","Indonesian":"Bahasa Indonesia",
-        "Dutch":"Nederlands","Persian":"فارسی","Hebrew":"עברית","Swedish":"Svenska","Greek":"Ελληνικά",
-        "Czech":"Čeština","Romanian":"Română","Hungarian":"Magyar","Bulgarian":"Български","Danish":"Dansk",
-        "Finnish":"Suomi","Norwegian":"Norsk","Slovak":"Slovenčina","Croatian":"Hrvatski","Serbian":"Српски"
+        "Afrikaans":"Afrikaans","Albanian":"Shqip","Amharic":"አማርኛ","Arabic":"العربية","Armenian":"Հայերեն",
+        "Azerbaijani":"Azərbaycan dili","Basque":"Euskara","Belarusian":"Беларуская","Bengali":"বাংলা",
+        "Bosnian":"Bosanski","Bulgarian":"Български","Catalan":"Català","Cebuano":"Cebuano","Chichewa":"Chichewa",
+        "Chinese (Simplified)":"中文（简体）","Chinese (Traditional)":"中文（繁體）","Corsican":"Corsu","Croatian":"Hrvatski",
+        "Czech":"Čeština","Danish":"Dansk","Dutch":"Nederlands","English":"English","Esperanto":"Esperanto",
+        "Estonian":"Eesti","Filipino":"Filipino","Finnish":"Suomi","French":"Français","Frisian":"Frysk",
+        "Galician":"Galego","Georgian":"ქართული","German":"Deutsch","Greek":"Ελληνικά","Gujarati":"ગુજરાતી",
+        "Haitian Creole":"Kreyòl ayisyen","Hausa":"Hausa","Hawaiian":"ʻŌlelo Hawaiʻi","Hebrew":"עברית","Hindi":"हिन्दी",
+        "Hmong":"Hmoob","Hungarian":"Magyar","Icelandic":"Íslenska","Igbo":"Igbo","Indonesian":"Bahasa Indonesia",
+        "Irish":"Gaeilge","Italian":"Italiano","Japanese":"日本語","Javanese":"Basa Jawa","Kannada":"ಕನ್ನಡ",
+        "Kazakh":"Қазақ тілі","Khmer":"ភាសាខ្មែរ","Korean":"한국어","Kurdish":"Kurdî","Kyrgyz":"Кыргызча",
+        "Lao":"ລາວ","Latin":"Latina","Latvian":"Latviešu","Lithuanian":"Lietuvių","Luxembourgish":"Lëtzebuergesch",
+        "Macedonian":"Македонски","Malagasy":"Malagasy","Malay":"Bahasa Melayu","Malayalam":"മലയാളം","Maltese":"Malti",
+        "Maori":"Te Reo Māori","Marathi":"मराठी","Mongolian":"Монгол","Myanmar (Burmese)":"မြန်မာစာ","Nepali":"नेपाली",
+        "Norwegian":"Norsk","Pashto":"پښتو","Persian":"فارسی","Polish":"Polski","Portuguese":"Português",
+        "Punjabi":"ਪੰਜਾਬੀ","Romanian":"Română","Russian":"Русский","Samoan":"Gagana fa'a Samoa","Scots Gaelic":"Gàidhlig",
+        "Serbian":"Српски","Sesotho":"Sesotho","Shona":"chiShona","Sindhi":"سنڌي","Sinhala":"සිංහල",
+        "Slovak":"Slovenčina","Slovenian":"Slovenščina","Somali":"Soomaali","Spanish":"Español","Sundanese":"Basa Sunda",
+        "Swahili":"Kiswahili","Swedish":"Svenska","Tajik":"тоҷикӣ","Tamil":"தமிழ்","Telugu":"తెలుగు",
+        "Thai":"ไทย","Turkish":"Türkçe","Ukrainian":"Українська","Urdu":"اردو","Uzbek":"O‘zbekcha",
+        "Vietnamese":"Tiếng Việt","Welsh":"Cymraeg","Xhosa":"isiXhosa","Yiddish":"ייִדיש","Yoruba":"Yorùbá","Zulu":"isiZulu"
       };
 
-      const applyNativeNames = () => {
-        document.querySelectorAll('.goog-te-menu2-item span, .goog-te-menu2-item-div span').forEach(el => {
-          const txt = el.textContent.trim();
-          if (nativeNames[txt]) el.textContent = nativeNames[txt];
+      const applyNative = () => {
+        document.querySelectorAll('.goog-te-menu2-item span, .goog-te-menu2-item-div span').forEach(span => {
+          const txt = span.textContent.trim();
+          if (nativeNames[txt]) span.textContent = nativeNames[txt];
         });
       };
-      setInterval(applyNativeNames, 400);
-      setTimeout(applyNativeNames, 1500);
+      setInterval(applyNative, 300);
+      setTimeout(applyNative, 1000);
+      setTimeout(applyNative, 2000);
+      setTimeout(applyNative, 3000);
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -80,12 +100,13 @@
     .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.96);z-index:9999;justify-content:center;align-items:center;}
     .modal-content{background:white;border-radius:26px;width:95%;max-width:1200px;height:95%;overflow:hidden;}
     iframe{width:100%;height:100%;border:none;}
+    footer{text-align:center;padding:70px 20px;background:var(--d);color:white;margin-top:100px;}
 
     .goog-te-gadget-simple{background:linear-gradient(135deg,#6366f1,#8b5cf6)!important;border:none!important;padding:12px 24px!important;border-radius:50px!important;color:white!important;font-weight:bold!important;box-shadow:0 8px 30px rgba(99,102,241,0.5)!important;}
     .goog-te-gadget-simple:hover{transform:translateY(-4px);}
     .goog-te-gadget-simple img{display:none!important;}
 
-    #grok-chat{position:fixed;bottom:20px;left:20px;width:60px;height:60px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:50%;cursor:pointer;z-index:99998;}
+    #grok-chat{position:fixed;bottom:20px;left:20px;width:60px;height:60px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:50%;cursor:pointer;z-index:99998;box-shadow:0 8px 25px rgba(99,102,241,0.4);}
     #grok-chat:hover{transform:scale(1.15);}
     #grok-chat::after{content:'G';color:white;font-weight:900;font-size:28px;line-height:60px;text-align:center;display:block;}
     #grok-modal{display:none;position:fixed;bottom:90px;left:20px;width:380px;height:520px;background:white;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.3);z-index:99999;overflow:hidden;}
@@ -105,66 +126,13 @@
 
 <div class="container">
   <div class="grid">
-    <!-- 20 Prompts (all included) -->
-    <div class="card"><h3 class="prompt-title">MrBeast YouTube Script Generator</h3><div class="price">$29</div><p class="desc">Proven 10M+ views formula.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mrbeast','_blank')">Buy $29</button></div>
-    <div class="card"><h3 class="prompt-title">Cold Email – 70% Reply Rate</h3><div class="price">$39</div><p class="desc">Used by top sales teams.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/coldemail','_blank')">Buy $39</button></div>
-    <div class="card"><h3 class="prompt-title">Midjourney Cinematic Movie Poster</h3><div class="price">$19</div><p class="desc">Hollywood-level images in one prompt.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mj-cinematic','_blank')">Buy $19</button></div>
-    <!-- ... الباقي 17 موجودين كاملين في الكود الأصلي (مش محذوفين) ... -->
-  </div>
-</div>
-
-<div id="modal" class="modal" onclick="if(event.target===this)this.style.display='none'">
-  <div class="modal-content">
-    <iframe src="https://huggingface.co/spaces/mlc-ai/web-llm-chat?model=llama-3.1-8b-instruct" allowfullscreen></iframe>
-  </div>
-</div>
-
-<div id="grok-chat" onclick="toggleGrok()"></div>
-<div id="grok-modal">
-  <div id="grok-messages">
-    <div class="grok msg">مرحبًا! أنا Grok من xAI. كيف أقدر أساعدك النهاردة؟</div>
-  </div>
-  <input type="text" id="grok-chat-input" placeholder="اكتب سؤالك..." onkeypress="if(event.key==='Enter')sendGrok()">
-</div>
-
-<script>
-function tryPrompt(){document.getElementById('modal').style.display='flex';}
-
-let grokOpen = false;
-function toggleGrok(){
-  grokOpen = !grokOpen;
-  document.getElementById('grok-modal').style.display = grokOpen ? 'block' : 'none';
-}
-
-function addMsg(text, user = false){
-  const div = document.createElement('div');
-  div.className = user ? 'msg user' : 'msg grok';
-  div.textContent = text;
-  document.getElementById('grok-messages').appendChild(div);
-  div.scrollIntoView({behavior:"smooth"});
-}
-
-function sendGrok(){
-  const input = document.getElementById('grok-chat-input');
-  const q = input.value.trim().toLowerCase();
-  if (!q) return;
-  addMsg(q, true);
-  input.value = '';
-
-  let reply = "";
-
-  if (q.includes('يوتيوب') || q.includes('youtube') || q.includes('mrbeast')) reply = "أفضل برومبت لليوتيوب هو MrBeast YouTube Script Generator بـ $29. يستخدمه صناع محتوى بملايين المشاهدات!";
-  else if (q.includes('ايميل') || q.includes('email') || q.includes('برد')) reply = "برومبت Cold Email بـ $39 يحقق 70% نسبة رد من المديرين التنفيذيين والمستثمرين.";
-  else if (q.includes('صور') || q.includes('image') || q.includes('midjourney')) reply = "Midjourney Cinematic Movie Poster بـ $19 فقط = صور سينمائية بجودة هوليوود في كل مرة.";
-  else if (q.includes('سيرة') || q.includes('cv') || q.includes('resume')) reply = "ATS-Proof Resume Builder بـ $35 يمرر 99% من أنظمة التوظيف في جوجل وأمازون وميتا.";
-  else if (q.includes('كتاب') || q.includes('book')) reply = "50K-Word Book Writer بـ $69 يكتب كتاب كامل (غير خيالي) في 7 أيام مع هيكل وتحرير.";
-  else if (q.includes('تيك توك') || q.includes('tiktok')) reply = "TikTok Viral Script بـ $35 يمسك المشاهد في أول 0.3 ثانية ويجيب ملايين المشاهدات.";
-  else if (q.includes('سعر') || q.includes('كام') || q.includes('price')) reply = "الأسعار من $19 إلى $69، دفعة واحدة، بدون اشتراك، تحميل فوري بعد الشراء.";
-  else if (q.includes('عربي') || q.includes('arabic')) reply = "نعم، الموقع يدعم العربية 100% تلقائيًا، وكل البرومبتات تشتغل مع أي لغة!";
-  else reply = "قل لي أكتر: عايز برومبت ليوتيوب؟ صور؟ كود؟ بيع؟ كتابة؟ سأقترح لك الأفضل على طول!";
-
-  setTimeout(() => addMsg(reply), 600);
-}
-</script>
-</body>
-</html>
+    <div class="card"><h3 class="prompt-title">MrBeast YouTube Script Generator</h3><div class="price">$29</div><p class="desc">Proven 10M+ views formula. Hook + story + viral CTA.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mrbeast','_blank')">Buy $29</button></div>
+    <div class="card"><h3 class="prompt-title">Cold Email – 70% Reply Rate</h3><div class="price">$39</div><p class="desc">Used by top sales teams. Works on CEOs & VCs.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/coldemail','_blank')">Buy $39</button></div>
+    <div class="card"><h3 class="prompt-title">Midjourney Cinematic Movie Poster</h3><div class="price">$19</div><p class="desc">One prompt = Hollywood-level images every time.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mj-cinematic','_blank')">Buy $19</button></div>
+    <div class="card"><h3 class="prompt-title">LinkedIn Viral Post (100K+ Impressions)</h3><div class="price">$25</div><p class="desc">Hook + storytelling framework used by top creators.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/linkedin','_blank')">Buy $25</button></div>
+    <div class="card"><h3 class="prompt-title">ATS-Proof Resume Builder</h3><div class="price">$35</div><p class="desc">Used by Google, Amazon, Meta candidates.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/resume','_blank')">Buy $35</button></div>
+    <div class="card"><h3 class="prompt-title">Sora / Runway Video Prompt Master</h3><div class="price">$49</div><p class="desc">Create cinematic AI videos like a pro director.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/video','_blank')">Buy $49</button></div>
+    <div class="card"><h3 class="prompt-title">Viral Twitter Thread (100K+ views)</h3><div class="price">$29</div><p class="desc">10-part framework used by top creators.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/twitter','_blank')">Buy $29</button></div>
+    <div class="card"><h3 class="prompt-title">Product Hunt Launch Copy</h3><div class="price">$49</div><p class="desc">Tagline + copy that guarantees Top 1.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/ph','_blank')">Buy $49</button></div>
+    <div class="card"><h3 class="prompt-title">Notion Second Brain OS</h3><div class="price">$39</div><p class="desc">Full PARA system + databases in one prompt.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/notion','_blank')">Buy $39</button></div>
+    <div class="card"><h3 class="prompt-title">Leonardo AI Anime Character Sheet</h3><div class="price">$19</div><p class="desc">Perfect anime character in 8 angles.</p><button class="btn try-btn
