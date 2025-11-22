@@ -7,75 +7,8 @@
   <meta name="description" content="Try the world's best AI prompts instantly for free – ChatGPT, Claude, Midjourney, Sora, Llama 3">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
-  <!-- Google Translate -->
+  <!-- Google Translate (will fix native names later) -->
   <div id="google_translate_element" style="position:fixed;bottom:20px;right:20px;z-index:99999;"></div>
-
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'ar,es,fr,de,zh-CN,zh-TW,ja,ko,pt,ru,hi,it,tr,pl,uk,vi,th,id,nl,fa,he,sv,ro,el,bg,cs,da,fi,hu,no,sk,hr,sr,lt,lv,et,tl,sw,ms,bn,ur,pa,gu,mr,te,ta,kn,ml,si,am,ha,ig,yo,af,sq,hy,az,eu,be,bs,ca,ceb,ny,co,eo,fy,gl,ka,kk,km,ku,ky,lo,la,lb,mk,mg,mt,mi,mn,my,ne,or,ps,sm,gd,st,sn,sd,so,su,tg,uz,yi,zu',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false
-      }, 'google_translate_element');
-
-      // Auto translate
-      setTimeout(() => {
-        const userLang = (navigator.language || navigator.userLanguage).slice(0,2);
-        const select = document.querySelector('.goog-te-combo');
-        if (select && userLang !== 'en') {
-          const code = userLang === 'zh' ? 'zh-CN' : userLang;
-          if (select.querySelector(`option[value="${code}"]`)) {
-            select.value = code;
-            select.dispatchEvent(new Event('change'));
-          }
-        }
-      }, 1200);
-
-      // Always English button
-      setInterval(() => {
-        const btn = document.querySelector('.goog-te-gadget-simple');
-        if (btn) btn.innerHTML = 'Select Language <span style="margin-left:5px;">▼</span>';
-      }, 300);
-
-      // Native names for all languages
-      const nativeNames = {
-        "Afrikaans":"Afrikaans","Albanian":"Shqip","Amharic":"አማርኛ","Arabic":"العربية","Armenian":"Հայերեն",
-        "Azerbaijani":"Azərbaycan dili","Basque":"Euskara","Belarusian":"Беларуская","Bengali":"বাংলা",
-        "Bosnian":"Bosanski","Bulgarian":"Български","Catalan":"Català","Cebuano":"Cebuano","Chichewa":"Chichewa",
-        "Chinese (Simplified)":"中文（简体）","Chinese (Traditional)":"中文（繁體）","Corsican":"Corsu","Croatian":"Hrvatski",
-        "Czech":"Čeština","Danish":"Dansk","Dutch":"Nederlands","English":"English","Esperanto":"Esperanto",
-        "Estonian":"Eesti","Filipino":"Filipino","Finnish":"Suomi","French":"Français","Frisian":"Frysk",
-        "Galician":"Galego","Georgian":"ქართული","German":"Deutsch","Greek":"Ελληνικά","Gujarati":"ગુજરાતી",
-        "Haitian Creole":"Kreyòl ayisyen","Hausa":"Hausa","Hawaiian":"ʻŌlelo Hawaiʻi","Hebrew":"עברית","Hindi":"हिन्दी",
-        "Hmong":"Hmoob","Hungarian":"Magyar","Icelandic":"Íslenska","Igbo":"Igbo","Indonesian":"Bahasa Indonesia",
-        "Irish":"Gaeilge","Italian":"Italiano","Japanese":"日本語","Javanese":"Basa Jawa","Kannada":"ಕನ್ನಡ",
-        "Kazakh":"Қазақ тілі","Khmer":"ភាសាខ្មែរ","Korean":"한국어","Kurdish":"Kurdî","Kyrgyz":"Кыргызча",
-        "Lao":"ລາວ","Latin":"Latina","Latvian":"Latviešu","Lithuanian":"Lietuvių","Luxembourgish":"Lëtzebuergesch",
-        "Macedonian":"Македонски","Malagasy":"Malagasy","Malay":"Bahasa Melayu","Malayalam":"മലയാളം","Maltese":"Malti",
-        "Maori":"Te Reo Māori","Marathi":"मराठी","Mongolian":"Монгол","Myanmar (Burmese)":"မြန်မာစာ","Nepali":"नेपाली",
-        "Norwegian":"Norsk","Pashto":"پښتو","Persian":"فارسی","Polish":"Polski","Portuguese":"Português",
-        "Punjabi":"ਪੰਜਾਬੀ","Romanian":"Română","Russian":"Русский","Samoan":"Gagana fa'a Samoa","Scots Gaelic":"Gàidhlig",
-        "Serbian":"Српски","Sesotho":"Sesotho","Shona":"chiShona","Sindhi":"سنڌي","Sinhala":"සිංහල",
-        "Slovak":"Slovenčina","Slovenian":"Slovenščina","Somali":"Soomaali","Spanish":"Español","Sundanese":"Basa Sunda",
-        "Swahili":"Kiswahili","Swedish":"Svenska","Tajik":"тоҷикӣ","Tamil":"தமிழ்","Telugu":"తెలుగు",
-        "Thai":"ไทย","Turkish":"Türkçe","Ukrainian":"Українська","Urdu":"اردو","Uzbek":"O'zbekcha",
-        "Vietnamese":"Tiếng Việt","Welsh":"Cymraeg","Xhosa":"isiXhosa","Yiddish":"ייִדיש","Yoruba":"Yorùbá","Zulu":"isiZulu"
-      };
-
-      const applyNative = () => {
-        document.querySelectorAll('.goog-te-menu2-item span, .goog-te-menu2-item-div span').forEach(span => {
-          const txt = span.textContent.trim();
-          if (nativeNames[txt]) span.textContent = nativeNames[txt];
-        });
-      };
-      setInterval(applyNative, 300);
-      setTimeout(applyNative, 1000);
-      setTimeout(applyNative, 2000);
-      setTimeout(applyNative, 3000);
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <style>
     :root{--p:#6366f1;--g:#10b981;--d:#0f172a;--l:#f8fafc;}
@@ -103,16 +36,6 @@
     .goog-te-gadget-simple{background:linear-gradient(135deg,#6366f1,#8b5cf6)!important;border:none!important;padding:12px 24px!important;border-radius:50px!important;color:white!important;font-weight:bold!important;box-shadow:0 8px 30px rgba(99,102,241,0.5)!important;}
     .goog-te-gadget-simple:hover{transform:translateY(-4px);}
     .goog-te-gadget-simple img{display:none!important;}
-
-    #grok-chat{position:fixed;bottom:20px;left:20px;width:60px;height:60px;background:linear-gradient(135deg,#6366f1,#8b5cf6);border-radius:50%;cursor:pointer;z-index:99998;}
-    #grok-chat:hover{transform:scale(1.15);}
-    #grok-chat::after{content:'G';color:white;font-weight:900;font-size:28px;line-height:60px;text-align:center;display:block;}
-    #grok-modal{display:none;position:fixed;bottom:90px;left:20px;width:380px;height:520px;background:white;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,0.3);z-index:99999;overflow:hidden;}
-    #grok-messages{height:430px;overflow-y:auto;padding:15px;background:#f9fafb;}
-    #grok-chat-input{width:100%;padding:15px;border:none;border-top:1px solid #eee;outline:none;font-size:15px;}
-    .msg{padding:12px 16px;margin:8px 0;border-radius:18px;max-width:85%;word-wrap:break-word;}
-    .user{background:var(--p);color:white;margin-left:auto;}
-    .grok{background:#e2e8f0;color:#000;}
   </style>
 </head>
 <body>
@@ -124,23 +47,203 @@
 
 <div class="container">
   <div class="grid">
-    <div class="card"><h3 class="prompt-title">MrBeast YouTube Script Generator</h3><div class="price">$29</div><p class="desc">Proven 10M+ views formula. Hook + story + viral CTA.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mrbeast','_blank')">Buy $29</button></div>
-    <div class="card"><h3 class="prompt-title">Cold Email – 70% Reply Rate</h3><div class="price">$39</div><p class="desc">Used by top sales teams. Works on CEOs & VCs.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/coldemail','_blank')">Buy $39</button></div>
-    <div class="card"><h3 class="prompt-title">Midjourney Cinematic Movie Poster</h3><div class="price">$19</div><p class="desc">One prompt = Hollywood-level images every time.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mj-cinematic','_blank')">Buy $19</button></div>
-    <div class="card"><h3 class="prompt-title">LinkedIn Viral Post (100K+ Impressions)</h3><div class="price">$25</div><p class="desc">Hook + storytelling framework used by top creators.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/linkedin','_blank')">Buy $25</button></div>
-    <div class="card"><h3 class="prompt-title">ATS-Proof Resume Builder</h3><div class="price">$35</div><p class="desc">Used by Google, Amazon, Meta candidates.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/resume','_blank')">Buy $35</button></div>
-    <div class="card"><h3 class="prompt-title">Sora / Runway Video Prompt Master</h3><div class="price">$49</div><p class="desc">Create cinematic AI videos like a pro director.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/video','_blank')">Buy $49</button></div>
-    <div class="card"><h3 class="prompt-title">Viral Twitter Thread (100K+ views)</h3><div class="price">$29</div><p class="desc">10-part framework used by top creators.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/twitter','_blank')">Buy $29</button></div>
-    <div class="card"><h3 class="prompt-title">Product Hunt Launch Copy</h3><div class="price">$49</div><p class="desc">Tagline + copy that guarantees Top 1.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/ph','_blank')">Buy $49</button></div>
-    <div class="card"><h3 class="prompt-title">Notion Second Brain OS</h3><div class="price">$39</div><p class="desc">Full PARA system + databases in one prompt.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/notion','_blank')">Buy $39</button></div>
-    <div class="card"><h3 class="prompt-title">Leonardo AI Anime Character Sheet</h3><div class="price">$19</div><p class="desc">Perfect anime character in 8 angles.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/anime','_blank')">Buy $19</button></div>
-    <div class="card"><h3 class="prompt-title">Claude 3.5 Code Anything</h3><div class="price">$45</div><p class="desc">Best prompt to build full apps faster than Cursor.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/claude','_blank')">Buy $45</button></div>
-    <div class="card"><h3 class="prompt-title">Instagram Caption (10K+ Likes)</h3><div class="price">$25</div><p class="desc">Hook + story + CTA used by 1M+ accounts.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/ig','_blank')">Buy $25</button></div>
-    <div class="card"><h3 class="prompt-title">50K-Word Book Writer</h3><div class="price">$69</div><p class="desc">Full nonfiction book in 7 days.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/book','_blank')">Buy $69</button></div>
-    <div class="card"><h3 class="prompt-title">Stable Diffusion Photoreal Portrait</h3><div class="price">$19</div><p class="desc">Better than Midjourney for human faces.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/sd','_blank')">Buy $19</button></div>
-    <div class="card"><h3 class="prompt-title">10%+ Converting Landing Page Copy</h3><div class="price">$59</div><p class="desc">Used by Copyhackers & top marketers.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/landing','_blank')">Buy $59</button></div>
-    <div class="card"><h3 class="prompt-title">TikTok Viral Script (Millions Views)</h3><div class="price">$35</div><p class="desc">Hook in first 0.3s + retention formula.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/tiktok','_blank')">Buy $35</button></div>
-    <div class="card"><h3 class="prompt-title">Email Newsletter (50K+ Subscribers)</h3><div class="price">$39</div><p class="desc">Open rate booster used by Morning Brew-style.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/newsletter','_blank')">Buy $39</button></div>
-    <div class="card"><h3 class="prompt-title">Podcast Script Generator (Joe Rogan Style)</h3><div class="price">$29</div><p class="desc">Engaging interview scripts that keep listeners hooked.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/podcast','_blank')">Buy $29</button></div>
-    <div class="card"><h3 class="prompt-title">SEO Blog Post (Top Google Rank)</h3><div class="price">$45</div><p class="desc">Keyword-optimized articles that rank #1.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/seo','_blank')">Buy $45</button></div>
-    <div class="card"><h3 class="prompt-title">Freelance Proposal (90% Win Rate)</h3><div class="price">$35</div><p class="desc">Client-winning proposals used by Upwork top earners.</p><button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button> <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad
+
+    <!-- 1 -->
+    <div class="card">
+      <h3 class="prompt-title">MrBeast YouTube Script Generator</h3>
+      <div class="price">$29</div>
+      <p class="desc">Proven 10M+ views formula. Hook + story + viral CTA.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mrbeast','_blank')">Buy $29</button>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+      <h3 class="prompt-title">Cold Email – 70% Reply Rate</h3>
+      <div class="price">$39</div>
+      <p class="desc">Used by top sales teams. Works on CEOs & VCs.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/coldemail','_blank')">Buy $39</button>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+      <h3 class="prompt-title">Midjourney Cinematic Movie Poster</h3>
+      <div class="price">$19</div>
+      <p class="desc">One prompt = Hollywood-level images every time.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/mj-cinematic','_blank')">Buy $19</button>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+      <h3 class="prompt-title">LinkedIn Viral Post (100K+ Impressions)</h3>
+      <div class="price">$25</div>
+      <p class="desc">Hook + storytelling framework used by top creators.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/linkedin','_blank')">Buy $25</button>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+      <h3 class="prompt-title">ATS-Proof Resume Builder</h3>
+      <div class="price">$35</div>
+      <p class="desc">Used by Google, Amazon, Meta candidates.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/resume','_blank')">Buy $35</button>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+      <h3 class="prompt-title">Sora / Runway Video Prompt Master</h3>
+      <div class="price">$49</div>
+      <p class="desc">Create cinematic AI videos like a pro director.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/video','_blank')">Buy $49</button>
+    </div>
+
+    <!-- 7 -->
+    <div class="card">
+      <h3 class="prompt-title">Viral Twitter Thread (100K+ views)</h3>
+      <div class="price">$29</div>
+      <p class="desc">10-part framework used by top creators.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/twitter','_blank')">Buy $29</button>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+      <h3 class="prompt-title">Product Hunt Launch Copy</h3>
+      <div class="price">$49</div>
+      <p class="desc">Tagline + copy that guarantees Top 1.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/ph','_blank')">Buy $49</button>
+    </div>
+
+    <!-- 9 -->
+    <div class="card">
+      <h3 class="prompt-title">Notion Second Brain OS</h3>
+      <div class="price">$39</div>
+      <p class="desc">Full PARA system + databases in one prompt.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/notion','_blank')">Buy $39</button>
+    </div>
+
+    <!-- 10 -->
+    <div class="card">
+      <h3 class="prompt-title">Leonardo AI Anime Character Sheet</h3>
+      <div class="price">$19</div>
+      <p class="desc">Perfect anime character in 8 angles.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/anime','_blank')">Buy $19</button>
+    </div>
+
+    <!-- 11 -->
+    <div class="card">
+      <h3 class="prompt-title">Claude 3.5 Code Anything</h3>
+      <div class="price">$45</div>
+      <p class="desc">Best prompt to build full apps faster than Cursor.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/claude','_blank')">Buy $45</button>
+    </div>
+
+    <!-- 12 -->
+    <div class="card">
+      <h3 class="prompt-title">Instagram Caption (10K+ Likes)</h3>
+      <div class="price">$25</div>
+      <p class="desc">Hook + story + CTA used by 1M+ accounts.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/ig','_blank')">Buy $25</button>
+    </div>
+
+    <!-- 13 -->
+    <div class="card">
+      <h3 class="prompt-title">50K-Word Book Writer</h3>
+      <div class="price">$69</div>
+      <p class="desc">Full nonfiction book in 7 days.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/book','_blank')">Buy $69</button>
+    </div>
+
+    <!-- 14 -->
+    <div class="card">
+      <h3 class="prompt-title">Stable Diffusion Photoreal Portrait</h3>
+      <div class="price">$19</div>
+      <p class="desc">Better than Midjourney for human faces.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/sd','_blank')">Buy $19</button>
+    </div>
+
+    <!-- 15 -->
+    <div class="card">
+      <h3 class="prompt-title">10%+ Converting Landing Page Copy</h3>
+      <div class="price">$59</div>
+      <p class="desc">Used by Copyhackers & top marketers.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/landing','_blank')">Buy $59</button>
+    </div>
+
+    <!-- 16 -->
+    <div class="card">
+      <h3 class="prompt-title">TikTok Viral Script (Millions Views)</h3>
+      <div class="price">$35</div>
+      <p class="desc">Hook in first 0.3s + retention formula.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/tiktok','_blank')">Buy $35</button>
+    </div>
+
+    <!-- 17 -->
+    <div class="card">
+      <h3 class="prompt-title">Email Newsletter (50K+ Subscribers)</h3>
+      <div class="price">$39</div>
+      <p class="desc">Open rate booster used by Morning Brew-style.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/newsletter','_blank')">Buy $39</button>
+    </div>
+
+    <!-- 18 -->
+    <div class="card">
+      <h3 class="prompt-title">Podcast Script Generator (Joe Rogan Style)</h3>
+      <div class="price">$29</div>
+      <p class="desc">Engaging interview scripts that keep listeners hooked.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/podcast','_blank')">Buy $29</button>
+    </div>
+
+    <!-- 19 -->
+    <div class="card">
+      <h3 class="prompt-title">SEO Blog Post (Top Google Rank)</h3>
+      <div class="price">$45</div>
+      <p class="desc">Keyword-optimized articles that rank #1.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/seo','_blank')">Buy $45</button>
+    </div>
+
+    <!-- 20 -->
+    <div class="card">
+      <h3 class="prompt-title">Freelance Proposal (90% Win Rate)</h3>
+      <div class="price">$35</div>
+      <p class="desc">Client-winning proposals used by Upwork top earners.</p>
+      <button class="btn try-btn" onclick="tryPrompt()">Try Now Free</button>
+      <button class="btn buy-btn" onclick="window.open('https://tryprompt.gumroad.com/l/proposal','_blank')">Buy $35</button>
+    </div>
+
+  </div> <!-- نهاية الـ grid -->
+</div> <!-- نهاية الـ container -->
+
+<!-- Modal للتجربة -->
+<div id="modal" class="modal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="modal-content">
+    <iframe src="https://huggingface.co/spaces/mlc-ai/web-llm-chat?model=llama-3.1-8b-instruct" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+function tryPrompt(){
+  document.getElementById('modal').style.display='flex';
+}
+</script>
+
+<!-- باقي الكود (Grok + الترجمة الأصلية) هنضيفه في الخطوة الجاية لو عايز -->
+</body>
+</html>
