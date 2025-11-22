@@ -27,87 +27,87 @@ h1{font-size:3.9rem;font-weight:900;}
 .buy{background:var(--g);color:white;}
 .btn:hover{transform:scale(1.08);}
 
-/* زر اللغات الأسود الثابت (مضمون الظهور) */
-#language-selector{
-  position:fixed !important;
-  bottom:30px !important;
-  right:30px !important;
-  z-index:999999 !important;
-  font-family:'Inter',sans-serif;
+/* زر Select Language – مضمون الظهور 100% */
+#language-selector {
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  z-index: 999999 !important;
+  font-family: 'Inter', sans-serif;
 }
-#lang-btn{
-  background:#000 !important;
-  color:white !important;
-  border:2px solid #333 !important;
-  padding:18px 36px !important;
-  font-size:18px !important;
-  font-weight:700 !important;
-  border-radius:60px !important;
-  cursor:pointer !important;
-  box-shadow:0 15px 45px rgba(0,0,0,0.6) !important;
-  transition:all .3s ease !important;
-  display:flex !important;
-  align-items:center !important;
-  gap:12px !important;
+#lang-btn {
+  background: #000 !important;
+  color: white !important;
+  border: 2px solid #333 !important;
+  padding: 18px 36px !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  border-radius: 60px !important;
+  cursor: pointer !important;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.6) !important;
+  transition: all .3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
 }
-#lang-btn:hover{
-  background:#111 !important;
-  transform:translateY(-6px) !important;
-  box-shadow:0 25px 60px rgba(0,0,0,0.8) !important;
+#lang-btn:hover {
+  background: #111 !important;
+  transform: translateY(-6px) !important;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8) !important;
 }
-#lang-btn::after{
-  content:"▼" !important;
-  font-size:16px !important;
+#lang-btn::after {
+  content: "▼" !important;
+  font-size: 16px !important;
 }
 
-#lang-dropdown{
-  position:absolute !important;
-  bottom:90px !important;
-  right:0 !important;
-  width:400px !important;
-  max-height:80vh !important;
-  background:#000 !important;
-  border:1px solid #333 !important;
-  border-radius:28px !important;
-  overflow:hidden !important;
-  box-shadow:0 35px 90px rgba(0,0,0,0.9) !important;
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(20px);
-  transition:all .4s ease;
+#lang-dropdown {
+  position: absolute !important;
+  bottom: 90px !important;
+  right: 0 !important;
+  width: 400px !important;
+  max-height: 80vh !important;
+  background: #000 !important;
+  border: 1px solid #333 !important;
+  border-radius: 28px !important;
+  overflow: hidden !important;
+  box-shadow: 0 35px 90px rgba(0,0,0,0.9) !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all .4s ease;
 }
-#lang-dropdown.active{
-  opacity:1 !important;
-  visibility:visible !important;
-  transform:translateY(0) !important;
+#lang-dropdown.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
 }
-#lang-search{
-  width:100% !important;
-  padding:22px 28px !important;
-  background:#111 !important;
-  border:none !important;
-  color:white !important;
-  font-size:18px !important;
-  outline:none !important;
+#lang-search {
+  width: 100% !important;
+  padding: 22px 28px !important;
+  background: #111 !important;
+  border: none !important;
+  color: white !important;
+  font-size: 18px !important;
+  outline: none !important;
 }
-#lang-search::placeholder{color:#888 !important;}
-#lang-list{
-  max-height:68vh !important;
-  overflow-y:auto !important;
-  padding:12px 0 !important;
+#lang-search::placeholder {color: #888 !important;}
+#lang-list {
+  max-height: 68vh !important;
+  overflow-y: auto !important;
+  padding: 12px 0 !important;
 }
-.lang-item{
-  padding:18px 32px !important;
-  color:white !important;
-  font-size:18px !important;
-  cursor:pointer !important;
-  transition:.2s;
+.lang-item {
+  padding: 18px 32px !important;
+  color: white !important;
+  font-size: 18px !important;
+  cursor: pointer !important;
+  transition: .2s;
 }
-.lang-item:hover{background:#222 !important;}
-#lang-list::-webkit-scrollbar{width:12px;}
-#lang-list::-webkit-scrollbar-track{background:#111;border-radius:10px;}
-#lang-list::-webkit-scrollbar-thumb{background:#555;border-radius:10px;}
-#lang-list::-webkit-scrollbar-thumb:hover{background:#777;}
+.lang-item:hover {background: #222 !important;}
+#lang-list::-webkit-scrollbar {width: 12px;}
+#lang-list::-webkit-scrollbar-track {background: #111; border-radius: 10px;}
+#lang-list::-webkit-scrollbar-thumb {background: #555; border-radius: 10px;}
+#lang-list::-webkit-scrollbar-thumb:hover {background: #777;}
 </style>
 </head>
 <body>
@@ -127,7 +127,7 @@ h1{font-size:3.9rem;font-weight:900;}
   <div id="prompts-grid" class="grid"></div>
 </div>
 
-<!-- زر Select Language (مضمون الظهور 100%) -->
+<!-- زر Select Language (مضمون الظهور) -->
 <div id="language-selector">
   <button id="lang-btn">Select Language</button>
   <div id="lang-dropdown">
